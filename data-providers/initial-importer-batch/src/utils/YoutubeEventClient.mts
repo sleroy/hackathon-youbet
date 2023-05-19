@@ -14,7 +14,6 @@ export class YoubetEventBusClient {
         const params = {
             /** input parameters */
         };
-        logger.debug(payload)
         const input: PutEventsCommandInput = { // PutEventsRequest
             Entries: [ // PutEventsRequestEntryList // required
                 { // PutEventsRequestEntry
@@ -27,7 +26,7 @@ export class YoubetEventBusClient {
                 },
             ],
         };
-        
+
         const command = new PutEventsCommand(input);
         return this.client.send(command);
     }

@@ -1,14 +1,14 @@
 import { BasicEvent } from "../utils/BasicEvent.mjs";
 
 
-export interface CountryCommand extends BasicEvent {
-    country: object
+export interface CreateLeagueCommand extends BasicEvent {
+    league: object
 }
 
-export function createLeagueCommand(res: any) : CountryCommand {
+export function createLeagueCommand(res: any) : CreateLeagueCommand {
     return {
         eventName: "CreateLeagueCommand",
-        country: {
+        league: {
             name: res.name
         }
     }

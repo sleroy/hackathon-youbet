@@ -1,7 +1,9 @@
 import winston from 'winston';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 export const logger = winston.createLogger({
-  level: 'info',
+  level: isProduction ? 'info' : 'info',
   format: winston.format.json(),
   defaultMeta: { service: 'initial-import-batch' },
   transports: [
@@ -18,8 +20,8 @@ export const logger = winston.createLogger({
 // If we're not in production then log to the `console` with the format:
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
 //
-if (process.env.NODE_ENV !== 'production') {
+if (!isProduction) {
   logger.add(new winston.transports.Console({
-    format: winston.format.simple(),
+    format:    winston.format.colorize(),
   }));
 }

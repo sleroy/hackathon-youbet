@@ -1,6 +1,5 @@
 {
-  "name": "country-importer-batch",
-  "type": "module",
+  "name": "initial-importer-batch",
   "version": "1.0.0",
   "description": "Batch to import the first list of countries",
   "main": "index.js",
@@ -13,13 +12,17 @@
   "author": "Sylvain Leroy",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-eventbridge": "^3.335.0",
     "@types/node": "^20.1.5",
     "axios": "^1.4.0",
     "sqlite3": "^5.1.6",
-    "tsc-watch": "^6.0.4"
+    "tsc-watch": "^6.0.4",
+    "winston": "^3.8.2"
   },
   "devDependencies": {
     "@types/sqlite3": "^3.1.8",
+    "@typescript-eslint/eslint-plugin": "^5.59.6",
+    "@typescript-eslint/parser": "^5.59.6",
     "typescript": "^5.0.4"
   }
 }

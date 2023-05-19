@@ -16,6 +16,19 @@ CREATE TABLE `Country` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `Country_UN` (`name`)
 );
+INSERT INTO Country (name) VALUES
+	 ('Belgium'),
+	 ('England'),
+	 ('France'),
+	 ('Germany'),
+	 ('Italy'),
+	 ('Netherlands'),
+	 ('Poland'),
+	 ('Portugal'),
+	 ('Scotland'),
+	 ('Spain');
+INSERT INTO Country (name) VALUES
+	 ('Switzerland');
 
 
 -- matchsystem.Team definition

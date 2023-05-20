@@ -8,13 +8,12 @@ import pkg from 'sqlite3';
 import { createCountryCommand } from './domain/country.mjs'
 
 
-import { EventBridgeClient, PutEventsCommandOutput } from "@aws-sdk/client-eventbridge";
+import { EventBridgeClient } from "@aws-sdk/client-eventbridge";
 import { YoubetEventBusClient } from './utils/YoutubeEventClient.mjs';
 import { logger } from './utils/logger.mjs';
 import { createLeagueCommand } from './domain/league.mjs';
 import { createTeamCommand } from './domain/team.mjs';
 import { registerMatchCommand, updateMatchDetailsCommand } from './domain/match.mjs';
-import { AuroraMysqlEngineVersion } from 'aws-cdk-lib/aws-rds';
 
 const REGION = "us-east-1";
 const { Database } = pkg;

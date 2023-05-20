@@ -67,6 +67,8 @@ CREATE TABLE matchsystem.`Match` (
   `match_api_id` varchar(36) NOT NULL,
   `home_team_api_id` int NOT NULL,
   `away_team_api_id` int NOT NULL,
+  `score_team_home` INT NULL,
+  `score_team_away` INT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Match_UN` (`match_api_id`),
   KEY `Match_FK_1` (`league_id`),

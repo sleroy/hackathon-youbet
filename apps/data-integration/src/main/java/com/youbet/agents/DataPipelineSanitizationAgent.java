@@ -1,4 +1,6 @@
 package com.youbet.agents;
 
-public class DataPipelineSanitizationAgent {
+import com.youbet.connectors.MessageConsumer;
+
+public class DataPipelineSanitizationAgent implements MessageConsumer {
 }

@@ -49,4 +49,10 @@ public class JsonUtils {
             throw new YoubetException(e);
         }
     }
+    
+    public static void initializeWithDefault() {
+        ObjectMapper objectMapper1 = new ObjectMapper();
+        objectMapper1.findAndRegisterModules();
+        initialize(objectMapper1);
+    }
 }

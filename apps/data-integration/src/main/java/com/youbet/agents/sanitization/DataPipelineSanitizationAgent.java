@@ -1,9 +1,9 @@
 package com.youbet.agents.sanitization;
 
+import com.youbet.agents.utils.StringUtils;
 import com.youbet.ports.messagebroker.MessageBrokerPort;
 import com.youbet.ports.messagebroker.YoubetMessage;
 import com.youbet.utils.JsonConsumer;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,5 +31,9 @@ public class DataPipelineSanitizationAgent implements JsonConsumer<ExternalProvi
             throw new IllegalArgumentException("Date of the match is expected in the event");
         }
         messageBrokerPort.dispatchMessageAggregateTeamQueue(YoubetMessage.toJsonBody(event));
+    }
+    
+    @Override public Class<ExternalProviderMatchRegisteredEvent> supportedImpl() {
+        return ExternalProviderMatchRegisteredEvent.class;
     }
 }

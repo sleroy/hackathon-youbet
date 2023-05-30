@@ -128,3 +128,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# IDE
+.idea/
+**/.idea/
+target
+*.iml
+.history/
+apps/data-integration/.idea/
+apps/data-integration/.idea

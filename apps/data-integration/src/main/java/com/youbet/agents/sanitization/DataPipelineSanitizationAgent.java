@@ -1,5 +1,6 @@
 package com.youbet.agents.sanitization;
 
+import com.youbet.agents.domain.ExternalProviderMatchRegisteredEvent;
 import com.youbet.agents.utils.StringUtils;
 import com.youbet.ports.messagebroker.MessageBrokerPort;
 import com.youbet.ports.messagebroker.YoubetMessage;
@@ -16,13 +17,15 @@ public class DataPipelineSanitizationAgent implements JsonConsumer<ExternalProvi
         this.messageBrokerPort = messageBrokerPort;
     }
 
-    @Override
-    public void handleRequest(ExternalProviderMatchRegisteredEvent event) {
+    @Override public void handleRequest(YoubetMessage youbetMessage, ExternalProviderMatchRegisteredEvent event) {
         if (StringUtils.isBlank(event.getLeague())) {
             throw new IllegalArgumentException("League is expected in the event");
         }
         if (StringUtils.isBlank(event.getCountry())) {
             throw new IllegalArgumentException("Country is expected in the event");
+        }
+        if (StringUtils.isBlank(event.getTeamName())) {
+            throw new IllegalArgumentException("Team is expected in the event");
         }
         if (StringUtils.isBlank(event.getMatchName())) {
             throw new IllegalArgumentException("Match name is expected in the event");
@@ -30,7 +33,12 @@ public class DataPipelineSanitizationAgent implements JsonConsumer<ExternalProvi
         if (null == event.getDate()) {
             throw new IllegalArgumentException("Date of the match is expected in the event");
         }
-        messageBrokerPort.dispatchMessageAggregateTeamQueue(YoubetMessage.toJsonBody(event));
+        // Transfer the message
+        messageBrokerPort.dispatchMessageAggregateLeagueQueue(youbetMessage);
+    }
+    
+    @Override public String getConsumerTag() {
+        return DataPipelineSanitizationAgent.class.getName();
     }
     
     @Override public Class<ExternalProviderMatchRegisteredEvent> supportedImpl() {

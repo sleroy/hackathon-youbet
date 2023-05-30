@@ -17,6 +17,9 @@
         <log4j-api.version>2.20.0</log4j-api.version>
         <commons-lang3.version>3.12.0</commons-lang3.version>
         <junit-jupiter.version>5.9.3</junit-jupiter.version>
+        <mybatis.version>3.5.13</mybatis.version>
+        <HikariCP.version>5.0.1</HikariCP.version>
+        <mysql-connector-j.version>8.0.33</mysql-connector-j.version>
     </properties>
 
     <dependencyManagement>
@@ -63,7 +66,21 @@
             <artifactId>jackson-module-parameter-names</artifactId>
             <version>${jackson.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${mybatis.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${HikariCP.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>${mysql-connector-j.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>

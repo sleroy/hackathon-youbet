@@ -5,13 +5,17 @@ import com.youbet.ports.messagebroker.YoubetMessage;
 /**
  * This interface describes a component that receives an Event:
  *
- * @param <E> the type of event
  */
-@FunctionalInterface
-public interface Consumer<E> {
+public interface Consumer {
 
     /**
      * This method is called for each event
      */
-    void handleRequest(E event);
+    void handleRequest(YoubetMessage event);
+    
+    /**
+     * Returns the name of the consumer.
+     * @return the consumer tag
+     */
+    String getConsumerTag();
 }

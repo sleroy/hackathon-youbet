@@ -1,0 +1,28 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="DataIntegrationMonolith" type="Application" factoryName="Application" nameIsGenerated="true">
+    <envs>
+      <env name="AURORA_JDBCURL" value="jdbc:mysql://localhost:3306/matchsystem" />
+      <env name="AURORA_PASSWORD" value="password" />
+      <env name="AURORA_USERNAME" value="root" />
+      <env name="RABBIT_HOST" value="localhost" />
+      <env name="RABBIT_PASSWORD" value="rabbitmq" />
+      <env name="RABBIT_USER" value="rabbitmq" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.youbet.app.DataIntegrationMonolith" />
+    <module name="data-integration" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.youbet.app.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+      <option name="credential" />
+      <option name="region" />
+      <option name="useCurrentConnection" value="false" />
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

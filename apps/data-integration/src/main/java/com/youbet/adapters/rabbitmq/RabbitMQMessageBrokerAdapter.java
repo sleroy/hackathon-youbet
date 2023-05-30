@@ -1,69 +1,52 @@
 package com.youbet.adapters.rabbitmq;
 
-import com.fasterxml.jackson.databind.introspect.DefaultAccessorNamingStrategy;
 import com.rabbitmq.client.*;
+import com.youbet.app.Queues;
 import com.youbet.ports.AppConfigurationPort;
 import com.youbet.ports.messagebroker.MessageBrokerPort;
 import com.youbet.ports.messagebroker.YoubetMessage;
 import com.youbet.utils.Consumer;
 import com.youbet.utils.JsonConsumer;
 import com.youbet.utils.YoubetException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeoutException;
 
-public class RabbitMQMessageBrokerAdapter implements MessageBrokerPort {
-    public static final int DEFAULT_PORT = 1562;
-    private final AppConfigurationPort appConfigurationPort;
-    private ConnectionFactory factory;
-
+public class RabbitMQMessageBrokerAdapter extends AbstractRabbitMQMessageBrokerAdapter {
+    
+    private static final Logger LOGGER = LoggerFactory.getLogger(RabbitMQMessageBrokerAdapter.class.getClass());
+    
     public RabbitMQMessageBrokerAdapter(AppConfigurationPort appConfigurationPort) {
-
-        this.appConfigurationPort = appConfigurationPort;
+        super(appConfigurationPort);
     }
-
+    
     @Override
     public void start() {
+        LOGGER.info("Initialization RabbitMQ connection factory");
         factory = new ConnectionFactory();
-        factory.setHost(appConfigurationPort.getProperty("rabbit.host"));
-        factory.setPort(appConfigurationPort.getPropertyAsInt("rabbit.port", DEFAULT_PORT));
+        factory.setUsername(appConfigurationPort.getPropertyOrFail(PROP_RABBIT_USERNAME));
+        factory.setPassword(appConfigurationPort.getPassword(PROP_RABBIT_PASSWORD));
+        factory.setHost(appConfigurationPort.getPropertyOrFail(PROP_RABBIT_HOST));
+        factory.setPort(appConfigurationPort.getPropertyAsInt(PROP_RABBIT_PORT, DEFAULT_PORT));
     }
-
-    @Override
-    public void dispatchMessageAggregateTeamQueue(YoubetMessage message) {
-
+    
+    @Override public void dispatchMessageAggregateLeagueQueue(YoubetMessage message) {
+        sendMessage(Queues.QUEUE_LEAGUE, message);
     }
-
-    public <T> void declareConsumer(String queueName, Consumer<T> agent1) {
-        Connection connection = null;
-        try {
-            connection = factory.newConnection();
-            final Channel channel = connection.createChannel();
-            final Consumer<YoubetMessage> adapt = adapt(agent1);
-            new DefaultConsumer(channel) {
-                @Override
-                public void handleDelivery(
-                        String consumerTag,
-                        Envelope envelope,
-                        AMQP.BasicProperties properties,
-                        byte[] body) throws IOException {
-                    YoubetMessage youbetMessage = new YoubetMessage(body);
-                    adapt.handleRequest(youbetMessage);
-                    //
-                }
-            };
-        } catch (IOException e) {
-            throw new YoubetException(e);
-        } catch (TimeoutException e) {
-            throw new YoubetException(e);
-        }
+    
+    @Override public void dispatchMessageMatchSystemMatchRegistrationQueue(YoubetMessage message) {
+        sendMessage(Queues.QUEUE_MATCH_DISPATCH, message);
     }
-
-    private <T> Consumer<YoubetMessage> adapt(Consumer<T> agent1) {
-        if (agent1 instanceof JsonConsumer) {
-            JsonConsumerAdapter jsonConsumerAdapter = new JsonConsumerAdapter((JsonConsumer) agent1);
-            return jsonConsumerAdapter;
-        }
-        return (Consumer<YoubetMessage>) agent1;
+    
+    @Override public void dispatchMessageAggregateTeamQueue(YoubetMessage youbetMessage) {
+        sendMessage(Queues.QUEUE_TEAM, youbetMessage);
+        
     }
+    
+    
 }

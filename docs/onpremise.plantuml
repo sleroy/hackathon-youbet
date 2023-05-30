@@ -193,11 +193,11 @@ package MatchPrediction {
 }
 
 
-ApiGateway -> ExternalProviderMatchRegisteredEvent
-ApiGateway -> ExternalProviderMatchUpdatedEvent
+ExternalProviderMatchRegisteredEvent -down-> ApiGateway 
+ExternalProviderMatchUpdatedEvent -down-> ApiGateway 
 
-ExternalProviderMatchRegisteredEvent -down-> ExternalProviderMatchRegistrationQueue
-ExternalProviderMatchUpdatedEvent -down-> ExternalProviderMatchUpdateQueue
+ApiGateway -down-> ExternalProviderMatchRegistrationQueue
+ApiGateway -down-> ExternalProviderMatchUpdateQueue
 
 ExternalProviderMatchRegistrationQueue -down-> DataPipelineExternalProviderMatchRegisteredAgent
 ExternalProviderMatchUpdateQueue -down-> DataPipelineExternalProviderMatchUpdatedAgent

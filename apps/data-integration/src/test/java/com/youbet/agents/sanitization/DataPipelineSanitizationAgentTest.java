@@ -1,6 +1,6 @@
 package com.youbet.agents.sanitization;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.youbet.agents.domain.ExternalProviderMatchRegisteredEvent;
 import com.youbet.agents.stubs.MessageBrokerPortStub;
 import com.youbet.utils.JsonUtils;
 import org.junit.jupiter.api.Assertions;

@@ -18,6 +18,14 @@ public class MessageBrokerPortStub implements MessageBrokerPort {
         
     }
     
+    @Override public void dispatchMessageAggregateLeagueQueue(YoubetMessage message) {
+        sentEvents.add(message);
+    }
+    
+    @Override public void dispatchMessageMatchSystemMatchRegistrationQueue(YoubetMessage message) {
+        sentEvents.add(message);
+    }
+    
     @Override public void dispatchMessageAggregateTeamQueue(YoubetMessage message) {
         sentEvents.add(message);
         

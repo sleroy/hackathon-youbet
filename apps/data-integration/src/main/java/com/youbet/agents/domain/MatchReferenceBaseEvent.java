@@ -1,42 +1,62 @@
-package com.youbet.agents.sanitization;
+package com.youbet.agents.domain;
 
 import java.time.LocalDateTime;
 
-public class MatchReference {
+public class MatchReferenceBaseEvent {
     private String matchName;
     private LocalDateTime date;
     private String league;
     private String country;
-
+    private String teamName;
+    
+    
     public String getMatchName() {
         return matchName;
     }
-
+    
     public void setMatchName(String matchName) {
         this.matchName = matchName;
     }
-
+    
     public LocalDateTime getDate() {
         return date;
     }
-
+    
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
-
+    
     public String getLeague() {
         return league;
     }
-
+    
     public void setLeague(String league) {
         this.league = league;
     }
-
+    
     public String getCountry() {
         return country;
     }
-
+    
     public void setCountry(String country) {
         this.country = country;
+    }
+    
+    public String getTeamName() {
+        return teamName;
+    }
+    
+    @Override public String toString() {
+        return "MatchReferenceBaseEvent{" +
+                "matchName='" + matchName + '\'' +
+                ", date=" + date +
+                ", league='" + league + '\'' +
+                ", country='" + country + '\'' +
+                ", teamName='" + teamName + '\'' +
+                '}';
+    }
+    
+    public void setTeamName(String team) {
+        this.teamName = team;
     }
 }

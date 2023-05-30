@@ -1,18 +1,20 @@
 package com.youbet.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.io.IOException;
 
 public class JsonUtils {
-    private static ObjectMapper objectMapper;
-
+    public static ObjectMapper objectMapper;
+    
     public static void initialize(ObjectMapper objectMapper) {
         JsonUtils.objectMapper = objectMapper;
     }
-
-
+    
+    
     /**
      * Converts the event into a JSON String.
      *
@@ -26,8 +28,8 @@ public class JsonUtils {
             throw new YoubetConversionException(e);
         }
     }
-
-
+    
+    
     /**
      * Converts the event into a JSON String.
      *
@@ -36,12 +38,12 @@ public class JsonUtils {
      */
     public static byte[] toJsonBytes(Object event) {
         try {
-            return objectMapper.writeValueAsBytes(event);
+            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsBytes(event);
         } catch (JsonProcessingException e) {
             throw new YoubetConversionException(e);
         }
     }
-
+    
     public static Object instantiate(Class impl, byte[] body) {
         try {
             return objectMapper.reader().readValue(body, impl);
@@ -54,5 +56,21 @@ public class JsonUtils {
         ObjectMapper objectMapper1 = new ObjectMapper();
         objectMapper1.findAndRegisterModules();
         initialize(objectMapper1);
+    }
+    
+    public static JsonNode parseBytes(byte[] body) {
+        try {
+            return objectMapper.readTree(body);
+        } catch (Exception e) {
+            throw new YoubetException("Cannot parse the payload as a JSON object", e);
+        }
+    }
+    
+    public static ObjectNode createObjectNode() {
+        return objectMapper.createObjectNode();
+    }
+    
+    public static JsonNode toJsonNode(Integer teamId) {
+        return objectMapper.valueToTree(teamId);
     }
 }

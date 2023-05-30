@@ -1,4 +1,4 @@
-package com.youbet.connectors;
+package com.youbet.ports;
 
 public interface MatchSystemRepositoryPort {
 }

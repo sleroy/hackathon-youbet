@@ -11,6 +11,8 @@
 
     <artifactId>youbet-match-system</artifactId>
 
+
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -20,6 +22,21 @@
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>youbet-ports</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>youbet-rabbitmq-adapter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>youbet-mysql-adapter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>youbet-envvar-adapter</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>

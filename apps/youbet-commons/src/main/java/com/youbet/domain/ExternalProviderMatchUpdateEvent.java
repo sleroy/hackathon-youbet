@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class ExternalProviderMatchUpdateEvent extends MatchReferenceBaseEvent {
     private MatchStateEnum state;
     private int score_team_home;
+    private int score_team_away;
     
     public MatchStateEnum getState() {
         return state;
@@ -30,8 +31,6 @@ public class ExternalProviderMatchUpdateEvent extends MatchReferenceBaseEvent {
     public void setScore_team_away(int score_team_away) {
         this.score_team_away = score_team_away;
     }
-    
-    private int score_team_away;
     
     @Override public String toString() {
         return "ExternalProviderMatchUpdateEvent{" +

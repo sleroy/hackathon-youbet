@@ -42,15 +42,15 @@ public class RabbitMQMessageBrokerAdapter extends AbstractRabbitMQMessageBrokerA
     }
     
     @Override public void dispatchToMatchSystemRegistrationQueue(YoubetMessage event) {
-        sendMessage(Queues.QUEUE_MATCH_SYSTEM_REGISTRATION_QUEUE, event);
+        sendMessage(Queues.QUEUE_MATCH_SYSTEM_REGISTRATION, event);
     }
     
     @Override public void dispatchToMatchSystemUpdateQueue(YoubetMessage event) {
-        sendMessage(Queues.QUEUE_MATCH_SYSTEM_UPDATE_QUEUE, event);
+        sendMessage(Queues.QUEUE_MATCH_SYSTEM_UPDATE, event);
     }
     
     @Override public void dispatchToMatchPredictionDataStorageQueue(YoubetMessage event) {
-        sendMessage(Queues.QUEUE_MATCH_PREDICTION_STORAGE_QUEUE, event);
+        sendMessage(Queues.QUEUE_MATCH_PREDICTION_STORAGE, event);
     }
     
     

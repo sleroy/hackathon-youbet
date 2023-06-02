@@ -1,12 +1,15 @@
 package com.youbet.matchsystem.agents.matchregistration;
 
-import com.youbet.domain.MatchReferenceBaseEvent;
 import com.youbet.ports.messagebroker.MessageBrokerPort;
 import com.youbet.ports.messagebroker.YoubetMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MatchRegistrationAgent implements com.youbet.ports.messagebroker.JsonConsumer<MatchReferenceBaseEvent> {
+/**
+ * This agent receives match registration, detects if the match does not exist. Creates the entry if missing. Initializes the score and the state with default value.
+ * It also sends an event to the integration layer to produce the new entity graph.
+ */
+public class MatchRegistrationAgent implements com.youbet.ports.messagebroker.JsonConsumer<MatchRegistrationEvent> {
     private static final Logger LOGGER = LoggerFactory.getLogger(MatchRegistrationAgent.class);
     private final MessageBrokerPort messageBrokerPort;
     private com.youbet.ports.matchsystem.MatchSystemRepositoryPort matchSystemRepositoryPort;
@@ -22,11 +25,11 @@ public class MatchRegistrationAgent implements com.youbet.ports.messagebroker.Js
         return MatchRegistrationAgent.class.getName();
     }
     
-    @Override public void handleRequest(YoubetMessage youbetMessage, MatchReferenceBaseEvent event) {
-
+    @Override public void handleRequest(YoubetMessage youbetMessage, MatchRegistrationEvent event) {
+        
     }
     
-    @Override public Class<MatchReferenceBaseEvent> supportedImpl() {
-        return MatchReferenceBaseEvent.class;
+    @Override public Class<MatchRegistrationEvent> supportedImpl() {
+        return MatchRegistrationEvent.class;
     }
 }

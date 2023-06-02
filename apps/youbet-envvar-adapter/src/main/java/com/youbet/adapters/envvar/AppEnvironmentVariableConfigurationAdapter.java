@@ -1,4 +1,4 @@
-package com.youbet.adapters.env;
+package com.youbet.adapters.envvar;
 
 import com.youbet.ports.AppConfigurationPort;
 import org.slf4j.Logger;

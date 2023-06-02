@@ -1,6 +1,6 @@
 package com.youbet.dataintegration.app;
 
-import com.youbet.adapters.env.AppEnvironmentVariableConfigurationAdapter;
+import com.youbet.adapters.envvar.AppEnvironmentVariableConfigurationAdapter;
 import com.youbet.adapters.mysql.MySqlDatabaseAdapter;
 import com.youbet.adapters.rabbitmq.Queues;
 import com.youbet.adapters.rabbitmq.RabbitMQMessageBrokerAdapter;
@@ -57,9 +57,9 @@ public class DataIntegrationMonolith {
         messageBroker.declareRequiredQueue(Queues.QUEUE_EXT_MATCH_REGISTRATION);
         messageBroker.declareRequiredQueue(Queues.QUEUE_EXT_MATCH_UPDATE);
         messageBroker.declareRequiredQueue(Queues.QUEUE_MATCH_DISPATCH);
-        messageBroker.declareRequiredQueue(Queues.QUEUE_MATCH_PREDICTION_STORAGE_QUEUE);
-        messageBroker.declareRequiredQueue(Queues.QUEUE_MATCH_SYSTEM_REGISTRATION_QUEUE);
-        messageBroker.declareRequiredQueue(Queues.QUEUE_MATCH_SYSTEM_UPDATE_QUEUE);
+        messageBroker.declareRequiredQueue(Queues.QUEUE_MATCH_PREDICTION_STORAGE);
+        messageBroker.declareRequiredQueue(Queues.QUEUE_MATCH_SYSTEM_REGISTRATION);
+        messageBroker.declareRequiredQueue(Queues.QUEUE_MATCH_SYSTEM_UPDATE);
     
     
     
@@ -87,5 +87,7 @@ public class DataIntegrationMonolith {
          * Agent to route the events
          */
         messageBroker.declareConsumer(Queues.QUEUE_MATCH_DISPATCH, new MatchEventDispatcherAgent(messageBrokerPort, matchSystemPort));
+    
+        LOGGER.info("Data Integration system initialized");
     }
 }

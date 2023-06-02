@@ -11,7 +11,6 @@ public class MatchReferenceBaseEvent {
     public static final String ATTR_HOME_TEAM = "homeTeam";
     public static final String ATTR_AWAY_TEAM = "awayTeam";
     
-    
     private String matchName;
     private LocalDateTime date;
     private String league;

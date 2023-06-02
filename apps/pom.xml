@@ -138,5 +138,6 @@
         <module>youbet-ports</module>
         <module>youbet-rabbitmq-adapter</module>
         <module>youbet-mysql-adapter</module>
+        <module>youbet-envvar-adapter</module>
     </modules>
 </project>

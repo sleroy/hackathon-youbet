@@ -6,8 +6,9 @@ import com.youbet.adapters.rabbitmq.Queues;
 import com.youbet.adapters.rabbitmq.RabbitMQMessageBrokerAdapter;
 import com.youbet.matchsystem.agents.matchregistration.MatchRegistrationAgent;
 import com.youbet.matchsystem.agents.matchupdate.MatchUpdateAgent;
+import com.youbet.matchsystem.agents.matchupdateodds.MatchUpdateOddsAgent;
 import com.youbet.ports.AppConfigurationPort;
-import com.youbet.ports.matchsystem.MatchSystemRepositoryPort;
+import com.youbet.ports.matchsystem.MatchSystemRepository;
 import com.youbet.ports.messagebroker.MessageBrokerPort;
 import com.youbet.utils.JsonUtils;
 import org.slf4j.Logger;
@@ -42,17 +43,18 @@ public class MatchSystemMonolith {
         MessageBrokerPort messageBrokerPort = messageBroker;
         
         /* Initializes Aurora Adapter */
-        MatchSystemRepositoryPort matchSystemPort = new MySqlDatabaseAdapter(appConfigurationPort);
+        MatchSystemRepository matchSystemPort = new MySqlDatabaseAdapter(appConfigurationPort).getMatchSystemRepository();
         
         /**
          * Initialize missing queues
          */
         messageBroker.declareRequiredQueue(Queues.QUEUE_MATCH_SYSTEM_REGISTRATION);
         messageBroker.declareRequiredQueue(Queues.QUEUE_MATCH_SYSTEM_UPDATE);
-        messageBroker.declareRequiredQueue(Queues.QUEUE_MATCH_INTEGRATION_MATCH_UPDATE);
+        messageBroker.declareRequiredQueue(Queues.QUEUE_MATCH_SYSTEM_UPDATE_ODDS);
         
         messageBroker.declareConsumer(Queues.QUEUE_MATCH_SYSTEM_REGISTRATION, new MatchRegistrationAgent(messageBrokerPort, matchSystemPort));
         messageBroker.declareConsumer(Queues.QUEUE_MATCH_SYSTEM_UPDATE, new MatchUpdateAgent(messageBrokerPort, matchSystemPort));
+        messageBroker.declareConsumer(Queues.QUEUE_MATCH_SYSTEM_UPDATE_ODDS, new MatchUpdateOddsAgent(messageBrokerPort, matchSystemPort));
         
         LOGGER.info("Match system initialized");
     

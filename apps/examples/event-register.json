@@ -1,0 +1,296 @@
+{
+  "matchName" : null,
+  "date" : [ 2015, 9, 23, 0, 0 ],
+  "league" : "Switzerland Super League",
+  "country" : "Switzerland",
+  "homeTeam" : "BSC Young Boys",
+  "awayTeam" : "FC Basel",
+  "season" : "2015/2016",
+  "stage" : "9",
+  "home_player_X1" : {
+    "birthday" : [ 1992, 2, 29 ],
+    "height" : 182,
+    "weight" : 187,
+    "playerName" : "Aaron Appindangoye"
+  },
+  "home_player_X2" : {
+    "birthday" : [ 1989, 12, 15 ],
+    "height" : 170,
+    "weight" : 146,
+    "playerName" : "Aaron Cresswell"
+  },
+  "home_player_X3" : {
+    "birthday" : [ 1982, 5, 8 ],
+    "height" : 182,
+    "weight" : 198,
+    "playerName" : "Aaron Galindo"
+  },
+  "home_player_X4" : {
+    "birthday" : [ 1986, 9, 4 ],
+    "height" : 182,
+    "weight" : 161,
+    "playerName" : "Aaron Hunt"
+  },
+  "home_player_X5" : {
+    "birthday" : [ 1987, 4, 16 ],
+    "height" : 165,
+    "weight" : 139,
+    "playerName" : "Aaron Lennon"
+  },
+  "home_player_X6" : {
+    "birthday" : [ 1989, 12, 15 ],
+    "height" : 170,
+    "weight" : 146,
+    "playerName" : "Aaron Cresswell"
+  },
+  "home_player_X7" : {
+    "birthday" : [ 1982, 5, 8 ],
+    "height" : 182,
+    "weight" : 198,
+    "playerName" : "Aaron Galindo"
+  },
+  "home_player_X8" : {
+    "birthday" : [ 1986, 9, 4 ],
+    "height" : 182,
+    "weight" : 161,
+    "playerName" : "Aaron Hunt"
+  },
+  "home_player_X9" : {
+    "birthday" : [ 1987, 4, 16 ],
+    "height" : 165,
+    "weight" : 139,
+    "playerName" : "Aaron Lennon"
+  },
+  "home_player_X10" : {
+    "birthday" : [ 1982, 5, 8 ],
+    "height" : 182,
+    "weight" : 198,
+    "playerName" : "Aaron Galindo"
+  },
+  "home_player_X11" : {
+    "birthday" : [ 1986, 9, 4 ],
+    "height" : 182,
+    "weight" : 161,
+    "playerName" : "Aaron Hunt"
+  },
+  "away_player_X1" : {
+    "birthday" : [ 1992, 2, 29 ],
+    "height" : 182,
+    "weight" : 187,
+    "playerName" : "Aaron Appindangoye"
+  },
+  "away_player_X2" : {
+    "birthday" : [ 1989, 12, 15 ],
+    "height" : 170,
+    "weight" : 146,
+    "playerName" : "Aaron Cresswell"
+  },
+  "away_player_X3" : {
+    "birthday" : [ 1982, 5, 8 ],
+    "height" : 182,
+    "weight" : 198,
+    "playerName" : "Aaron Galindo"
+  },
+  "away_player_X4" : {
+    "birthday" : [ 1986, 9, 4 ],
+    "height" : 182,
+    "weight" : 161,
+    "playerName" : "Aaron Hunt"
+  },
+  "away_player_X5" : {
+    "birthday" : [ 1987, 4, 16 ],
+    "height" : 165,
+    "weight" : 139,
+    "playerName" : "Aaron Lennon"
+  },
+  "away_player_X6" : {
+    "birthday" : [ 1982, 5, 8 ],
+    "height" : 182,
+    "weight" : 198,
+    "playerName" : "Aaron Galindo"
+  },
+  "away_player_X7" : {
+    "birthday" : [ 1986, 9, 4 ],
+    "height" : 182,
+    "weight" : 161,
+    "playerName" : "Aaron Hunt"
+  },
+  "away_player_X8" : {
+    "birthday" : [ 1991, 5, 13 ],
+    "height" : 170,
+    "weight" : 163,
+    "playerName" : "Aaron Doran"
+  },
+  "away_player_X9" : {
+    "birthday" : [ 1979, 11, 8 ],
+    "height" : 182,
+    "weight" : 154,
+    "playerName" : "Aaron Hughes"
+  },
+  "away_player_X10" : {
+    "birthday" : [ 1996, 1, 30 ],
+    "height" : 172,
+    "weight" : 146,
+    "playerName" : "Aaron Kuhl"
+  },
+  "away_player_X11" : {
+    "birthday" : [ 1979, 11, 8 ],
+    "height" : 182,
+    "weight" : 154,
+    "playerName" : "Aaron Hughes"
+  },
+  "home_player_Y1" : {
+    "birthday" : [ 1992, 2, 29 ],
+    "height" : 182,
+    "weight" : 187,
+    "playerName" : "Aaron Appindangoye"
+  },
+  "home_player_Y2" : {
+    "birthday" : [ 1991, 5, 13 ],
+    "height" : 170,
+    "weight" : 163,
+    "playerName" : "Aaron Doran"
+  },
+  "home_player_Y3" : {
+    "birthday" : [ 1991, 5, 13 ],
+    "height" : 170,
+    "weight" : 163,
+    "playerName" : "Aaron Doran"
+  },
+  "home_player_Y4" : {
+    "birthday" : [ 1991, 5, 13 ],
+    "height" : 170,
+    "weight" : 163,
+    "playerName" : "Aaron Doran"
+  },
+  "home_player_Y5" : {
+    "birthday" : [ 1991, 5, 13 ],
+    "height" : 170,
+    "weight" : 163,
+    "playerName" : "Aaron Doran"
+  },
+  "home_player_Y6" : {
+    "birthday" : [ 1996, 1, 30 ],
+    "height" : 172,
+    "weight" : 146,
+    "playerName" : "Aaron Kuhl"
+  },
+  "home_player_Y7" : {
+    "birthday" : [ 1996, 1, 30 ],
+    "height" : 172,
+    "weight" : 146,
+    "playerName" : "Aaron Kuhl"
+  },
+  "home_player_Y8" : {
+    "birthday" : [ 1996, 1, 30 ],
+    "height" : 172,
+    "weight" : 146,
+    "playerName" : "Aaron Kuhl"
+  },
+  "home_player_Y9" : {
+    "birthday" : [ 1996, 1, 30 ],
+    "height" : 172,
+    "weight" : 146,
+    "playerName" : "Aaron Kuhl"
+  },
+  "home_player_Y10" : {
+    "birthday" : [ 1987, 10, 28 ],
+    "height" : 175,
+    "weight" : 170,
+    "playerName" : "Aaron Meijers"
+  },
+  "home_player_Y11" : {
+    "birthday" : [ 1987, 10, 28 ],
+    "height" : 175,
+    "weight" : 170,
+    "playerName" : "Aaron Meijers"
+  },
+  "away_player_11" : null,
+  "away_player_Y1" : {
+    "birthday" : [ 1992, 2, 29 ],
+    "height" : 182,
+    "weight" : 187,
+    "playerName" : "Aaron Appindangoye"
+  },
+  "away_player_Y2" : {
+    "birthday" : [ 1991, 5, 13 ],
+    "height" : 170,
+    "weight" : 163,
+    "playerName" : "Aaron Doran"
+  },
+  "away_player_Y3" : {
+    "birthday" : [ 1991, 5, 13 ],
+    "height" : 170,
+    "weight" : 163,
+    "playerName" : "Aaron Doran"
+  },
+  "away_player_Y4" : {
+    "birthday" : [ 1991, 5, 13 ],
+    "height" : 170,
+    "weight" : 163,
+    "playerName" : "Aaron Doran"
+  },
+  "away_player_Y5" : {
+    "birthday" : [ 1991, 5, 13 ],
+    "height" : 170,
+    "weight" : 163,
+    "playerName" : "Aaron Doran"
+  },
+  "away_player_Y6" : {
+    "birthday" : [ 1986, 9, 4 ],
+    "height" : 182,
+    "weight" : 161,
+    "playerName" : "Aaron Hunt"
+  },
+  "away_player_Y7" : {
+    "birthday" : [ 1986, 9, 4 ],
+    "height" : 182,
+    "weight" : 161,
+    "playerName" : "Aaron Hunt"
+  },
+  "away_player_Y8" : {
+    "birthday" : [ 1987, 4, 16 ],
+    "height" : 165,
+    "weight" : 139,
+    "playerName" : "Aaron Lennon"
+  },
+  "away_player_Y9" : {
+    "birthday" : [ 1987, 4, 16 ],
+    "height" : 165,
+    "weight" : 139,
+    "playerName" : "Aaron Lennon"
+  },
+  "away_player_Y10" : {
+    "birthday" : [ 1987, 4, 16 ],
+    "height" : 165,
+    "weight" : 139,
+    "playerName" : "Aaron Lennon"
+  },
+  "away_player_Y11" : {
+    "birthday" : [ 1980, 11, 25 ],
+    "height" : 182,
+    "weight" : 181,
+    "playerName" : "Aaron Mokoena"
+  },
+  "home_player_1" : null,
+  "home_player_2" : null,
+  "home_player_3" : null,
+  "home_player_4" : null,
+  "home_player_5" : null,
+  "home_player_6" : null,
+  "home_player_7" : null,
+  "home_player_8" : null,
+  "home_player_9" : null,
+  "home_player_10" : null,
+  "home_player_11" : null,
+  "away_player_1" : null,
+  "away_player_2" : null,
+  "away_player_3" : null,
+  "away_player_4" : null,
+  "away_player_5" : null,
+  "away_player_6" : null,
+  "away_player_7" : null,
+  "away_player_8" : null,
+  "away_player_9" : null,
+  "away_player_10" : null
+}

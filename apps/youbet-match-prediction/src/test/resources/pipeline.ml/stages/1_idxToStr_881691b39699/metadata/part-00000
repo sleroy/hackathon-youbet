@@ -1,0 +1,1 @@
+{"class":"org.apache.spark.ml.feature.IndexToString","timestamp":1686047046244,"sparkVersion":"3.4.0","uid":"idxToStr_881691b39699","paramMap":{"labels":["HOME_WIN","AWAY_WIN","STALEMATE"],"outputCol":"predictedLabel","inputCol":"prediction"},"defaultParamMap":{"outputCol":"idxToStr_881691b39699__output"}}

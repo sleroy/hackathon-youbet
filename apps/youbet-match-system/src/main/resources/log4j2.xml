@@ -10,8 +10,11 @@
     </Appenders>
     <Loggers>
         <!-- Root logger referring to console appender -->
-        <Root level="DEBUG" additivity="false">
+        <Root level="INFO" additivity="false">
             <AppenderRef ref="console" />
         </Root>
+<!--        <logger name="com.youbet.adapters.mysql.mappers.MatchMapper">
+            <level value="INFO"/>
+        </logger>-->
     </Loggers>
 </Configuration>

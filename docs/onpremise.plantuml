@@ -164,6 +164,7 @@ package DataPreparation {
   queue DataPipelineMatchRegistrationSanitizationQueue 
   queue DataPipelineAggregateLeagueQueue 
   queue DataPipelineAggregateTeamQueue 
+  queue DataPipelineAggregatePlayerQueue
   queue DataPipelineMatchEventDispatcherQueue  
 
   agent DataPipelineExternalProviderMatchRegisteredAgent
@@ -172,13 +173,15 @@ package DataPreparation {
   agent DataPipelineSanitizationAgent
   agent DataPipelineAggregateLeagueAgent
   agent DataPipelineAggregateTeamAgent
+  agent DataPipelineAggregatePlayerAgent
   agent DataPipelineMatchEventDispatcherAgent
 
 }
 
 package MatchSystem {
   queue MatchSystemMatchRegistrationQueue 
-  queue MatchSystemMatchUpdateQueue 
+  queue MatchSystemMatchUpdateQueue
+  queue MatchSystemMatchScoreUpdateQueue 
 
   agent MatchSystemMatchRegistrationAgent
   agent MatchSystemMatchUpdateAgent
@@ -187,11 +190,14 @@ package MatchSystem {
 }
 
 package MatchPrediction {
-  agent MatchPredictionMatchDataStorageAgent
-  queue MatchPredictionMatchDataStorageQueue 
+    agent MatchPredictionMatchDataStorageAgent
+    queue MatchPredictionMatchDataStorageQueue
+    queue MatchPredictionQueue
+    agent MatchPredictionScoreAgent
 
+    Aurora(matchPredictionDB, "Match Prediction DB", "")    
+   
 }
-
 
 ExternalProviderMatchRegisteredEvent -down-> ApiGateway 
 ExternalProviderMatchUpdatedEvent -down-> ApiGateway 
@@ -217,15 +223,19 @@ DataPipelineAggregateLeagueAgent -up-> matchSystemDB
 
 
 DataPipelineAggregateTeamQueue -> DataPipelineAggregateTeamAgent 
-
-DataPipelineAggregateTeamAgent -> DataPipelineMatchEventDispatcherQueue 
 DataPipelineAggregateTeamAgent -up-> matchSystemDB
+DataPipelineAggregateTeamAgent -> DataPipelineAggregatePlayerQueue
+
+DataPipelineAggregatePlayerQueue -> DataPipelineAggregatePlayerAgent
+DataPipelineAggregatePlayerAgent -up-> matchSystemDB
+DataPipelineAggregatePlayerAgent -> DataPipelineMatchEventDispatcherQueue
+
 
 DataPipelineMatchEventDispatcherQueue -> DataPipelineMatchEventDispatcherAgent
 
 DataPipelineMatchEventDispatcherAgent -up-> MatchSystemMatchRegistrationQueue 
 DataPipelineMatchEventDispatcherAgent -down-> MatchSystemMatchUpdateQueue
-DataPipelineMatchEventDispatcherAgent --> MatchPredictionMatchDataStorageQueue
+DataPipelineMatchEventDispatcherAgent -> MatchPredictionMatchDataStorageQueue  
 
 
 ' MATCH SYSTEM
@@ -236,7 +246,12 @@ MatchSystemMatchUpdateAgent -> matchSystemDB
 
 
 ' MATCH PREDICTION
-MatchPredictionMatchDataStorageAgent -> MatchPredictionMatchDataStorageQueue
+MatchPredictionMatchDataStorageQueue -down-> MatchPredictionMatchDataStorageAgent  
+matchPredictionDB --> MatchPredictionMatchDataStorageAgent 
+MatchPredictionMatchDataStorageAgent --> MatchPredictionQueue
+matchPredictionDB -> MatchPredictionScoreAgent 
+MatchPredictionQueue -> MatchPredictionScoreAgent
+MatchPredictionScoreAgent -> MatchSystemMatchScoreUpdateQueue  
 
 
 '

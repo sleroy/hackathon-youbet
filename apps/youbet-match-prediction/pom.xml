@@ -11,6 +11,7 @@
 
     <artifactId>youbet-match-prediction</artifactId>
 
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -21,6 +22,40 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>youbet-ports</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>youbet-rabbitmq-adapter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>youbet-mysql-adapter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>youbet-envvar-adapter</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Spark ML -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.13</artifactId>
+            <version>3.4.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-log4j12</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-mllib_2.13</artifactId>
+            <version>3.4.0</version>
         </dependency>
     </dependencies>
 </project>

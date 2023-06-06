@@ -1,0 +1,12 @@
+{
+  "matchName" : null,
+  "date" : [ 2015, 9, 23, 0, 0 ],
+  "league" : "Switzerland Super League",
+  "country" : "Switzerland",
+  "homeTeam" : "BSC Young Boys",
+  "awayTeam" : "FC Basel",
+  "season" : "2015/2016",
+  "stage" : "9",
+  "home_team_goal":  0,
+  "away_team_goal":  0
+}

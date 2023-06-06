@@ -1,7 +1,12 @@
 package com.youbet.adapters.rabbitmq;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.ConnectionFactory;
+import com.youbet.domain.events.MatchPredictionOddsUpdatedEvent;
+import com.youbet.domain.externalprov.ExternalProviderMatchRegisteredEvent;
+import com.youbet.domain.externalprov.ExternalProviderMatchUpdatedEvent;
+import com.youbet.domain.requests.MatchBaseInfoRequest;
+import com.youbet.domain.requests.MatchSystemMatchRegistrationRequest;
 import com.youbet.ports.AppConfigurationPort;
 import com.youbet.ports.messagebroker.YoubetMessage;
 import org.slf4j.Logger;
@@ -29,8 +34,8 @@ public class RabbitMQMessageBrokerAdapter extends AbstractRabbitMQMessageBrokerA
         sendMessage(Queues.QUEUE_LEAGUE, message);
     }
     
-    @Override public void dispatchToMatchSystemMatchRegistrationQueue(ObjectNode jsonPayload) {
-        sendMessage(Queues.QUEUE_MATCH_DISPATCH, YoubetMessage.fromJson(jsonPayload));
+    @Override public void dispatchToMatchEventNotifier(MatchSystemMatchRegistrationRequest jsonPayload) {
+        sendMessage(Queues.QUEUE_MATCH_EVENT_NOTIFIER, YoubetMessage.fromEvent(jsonPayload));
     }
     
     @Override public void dispatchToAggregateTeamQueue(ObjectNode youbetMessage) {
@@ -51,6 +56,31 @@ public class RabbitMQMessageBrokerAdapter extends AbstractRabbitMQMessageBrokerA
     
     @Override public void dispatchToMatchPredictionDataStorageQueue(YoubetMessage event) {
         sendMessage(Queues.QUEUE_MATCH_PREDICTION_STORAGE, event);
+    }
+    
+    @Override public void dispatchToMatchEventNotifier(YoubetMessage youbetMessage) {
+        sendMessage(Queues.QUEUE_MATCH_EVENT_NOTIFIER, youbetMessage);
+        
+    }
+    
+    @Override public void dispatchToPlayerAggregation(ObjectNode jsonNode) {
+        sendMessage(Queues.QUEUE_PLAYER, YoubetMessage.fromJson(jsonNode));
+    }
+    
+    @Override public void dispatchToMatchSystemUpdateScore(MatchPredictionOddsUpdatedEvent updatedEvent) {
+        sendMessage(Queues.QUEUE_MATCH_SYSTEM_UPDATE_ODDS, YoubetMessage.fromEvent(updatedEvent));
+    }
+    
+    @Override public void dispatchToMatchPredictionUpdateScore(MatchBaseInfoRequest event) {
+        sendMessage(Queues.QUEUE_MATCH_PREDICTION_SCORE, YoubetMessage.fromEvent(event));
+    }
+    
+    @Override public void dispatchToExternalProviderMatchRegistrationQueue(ExternalProviderMatchRegisteredEvent event) {
+        sendMessage(Queues.QUEUE_EXT_MATCH_REGISTRATION, YoubetMessage.fromEvent(event));
+    }
+    
+    @Override public void dispatchToExternalProviderMatchUpdateQueue(ExternalProviderMatchUpdatedEvent event) {
+        sendMessage(Queues.QUEUE_EXT_MATCH_UPDATE, YoubetMessage.fromEvent(event));
     }
     
     

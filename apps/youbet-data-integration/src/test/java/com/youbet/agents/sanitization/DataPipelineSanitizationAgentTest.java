@@ -1,8 +1,8 @@
 package com.youbet.agents.sanitization;
 
 import com.youbet.agents.stubs.MessageBrokerPortStub;
-import com.youbet.dataintegration.agents.sanitization.DataPipelineSanitizationAgent;
-import com.youbet.domain.ExternalProviderMatchRegisteredEvent;
+import com.youbet.dataintegration.agents.DataPipelineSanitizationAgent;
+import com.youbet.domain.externalprov.ExternalProviderMatchRegisteredEvent;
 import com.youbet.ports.messagebroker.YoubetMessage;
 import com.youbet.utils.JsonUtils;
 import org.junit.jupiter.api.Assertions;
@@ -64,7 +64,6 @@ class DataPipelineSanitizationAgentTest {
         var event = new ExternalProviderMatchRegisteredEvent();
         event.setLeague(MatchEventStub.LEAGUE_EXAMPLE);
         event.setCountry(MatchEventStub.COUNTRY_EXAMPLE);
-        event.setMatchName(MatchEventStub.MATCH_EXAMPLE);
         event.setHomeTeam(MatchEventStub.TEAM_EXAMPLE1);
         event.setAwayTeam(MatchEventStub.TEAM_EXAMPLE2);
         validateCheck(event, "Date of the match is expected in the event");
@@ -76,7 +75,6 @@ class DataPipelineSanitizationAgentTest {
         var event = new ExternalProviderMatchRegisteredEvent();
         event.setLeague(MatchEventStub.LEAGUE_EXAMPLE);
         event.setCountry(MatchEventStub.COUNTRY_EXAMPLE);
-        event.setMatchName(MatchEventStub.MATCH_EXAMPLE);
         event.setHomeTeam(MatchEventStub.TEAM_EXAMPLE1);
         event.setAwayTeam(MatchEventStub.TEAM_EXAMPLE2);
         event.setDate(LocalDateTime.now());

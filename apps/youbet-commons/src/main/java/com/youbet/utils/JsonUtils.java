@@ -23,7 +23,7 @@ public class JsonUtils {
      */
     public static String toJsonString(Object event) {
         try {
-            return objectMapper.writeValueAsString(event);
+            return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(event);
         } catch (JsonProcessingException e) {
             throw new YoubetConversionException(e);
         }
